@@ -1,6 +1,7 @@
 import { Construct } from "constructs";
 import { App, TerraformStack } from "cdktf";
-import { AwsProvider } from "@cdktf/provider-aws/lib/provider";
+import { AwsProvider } from "./.gen/providers/aws/provider";
+// import { Instance } from "./.gen/providers/aws/instance"
 import { Vpc } from "./.gen/modules/vpc";
 
 
@@ -20,6 +21,11 @@ class MyStack extends TerraformStack {
       publicSubnets: ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"],
       enableNatGateway: true,
     });
+
+    // const ec2Instance = new Instance(this, "compute", {
+    //   ami: "ami-01456a894f71116f2",
+    //   instanceType: "t2.micro",
+    // });
   }
 }
 
